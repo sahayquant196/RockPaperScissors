@@ -30,7 +30,7 @@ class Game:
             else:
                 print(self.Player1.Name + ' wins!')
         elif (player1_result == 'Scissors'):
-            if (player2_result == 'Paper'):
+            if (player2_result == 'Rock'):
                 print(self.Player2.Name + ' wins!')
             else:
                 print(self.Player1.Name + ' wins!')
