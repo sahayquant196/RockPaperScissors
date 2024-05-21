@@ -1,10 +1,17 @@
 class Player:
     def __init__(self,Name):
         self.__Name = Name
-        self.Choice = None
+        self.__choice = None
     @property
     def Name(self):
         return self.__Name
+    @property
+    def choice(self):
+        return self.__choice
+
+    @choice.setter
+    def choice(self,choice):
+        self.__choice = choice
     @classmethod
     def ChoosePlayer(cls,userinput):
         #
