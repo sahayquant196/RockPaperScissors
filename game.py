@@ -1,19 +1,15 @@
 from Player import Player
 import random
-import pwinput
+from constants import *
+import utils
 class Game:
-    def __init__(self,player1_name,user_input):
+    choices = ['Rock','Paper','Scissors']
+    def __init__(self):
+        welcome = welcome_string
+        print(welcome)
+        player1_name, user_input = utils.user_inputs()
         self.Player1 =Player(player1_name)
         self.Player2 = Player.ChoosePlayer(user_input)
-        self.choices = ['Rock','Paper','Scissors']
-        welcome = '''
-            **************************************************
-            **************************************************
-            WELCOME TO THE WORLD OF ROCK, PAPER, SCISSORS
-            **************************************************
-            **************************************************
-            '''
-        print(welcome)
     def checkResult(self):
         player1_result = self.Player1.choice
         player2_result = self.Player2.choice
@@ -34,17 +30,17 @@ class Game:
                 print(self.Player2.Name + ' wins!')
             else:
                 print(self.Player1.Name + ' wins!')
-        exit()
+
 
     def startGame(self):
         print('You have to choose 0 for rock, 1 for paper, 2 for scissors')
         if self.Player2.Name =='Computer':
             rand_select = random.randint(0,2)
-            self.Player2.choice = self.choices[rand_select]
+            self.Player2.choice = Game.choices[rand_select]
             prompt_string = self.Player1.Name + ' : please select your choice'
             player1_choice = input(prompt_string)
             print("\n" * 100)
-            self.Player1.choice = self.choices[int(player1_choice)]
+            self.Player1.choice = Game.choices[int(player1_choice)]
 
         else:
             prompt_string_1 = self.Player1.Name + ' : please select your choice'
@@ -53,10 +49,18 @@ class Game:
             prompt_string_2 = self.Player2.Name + ' : please select your choice'
             player2_choice = input(prompt_string_2)
             print("\n" * 100)
-            self.Player1.choice = self.choices[int(player1_choice)]
+            self.Player1.choice = Game.choices[int(player1_choice)]
 
-            self.Player2.choice = self.choices[int(player2_choice)]
+            self.Player2.choice = Game.choices[int(player2_choice)]
         self.checkResult()
+        print("\n"*5)
+        restart = input('Press 0 to play again')
+        if restart == '0':
+            Game1 = Game()
+            Game1.startGame()
+        else:
+            exit('The game has now ended')
+
 
 
 
